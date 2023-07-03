@@ -35,9 +35,9 @@ def answer():
         message = re.sub(r'>', r'&gt;', message)
         message = re.sub(r'\*(.+)\*', r'<strong>\1</strong>', message)
         message = re.sub(r'(\d{2,3})-\d+-\d+', r'\1-****-****', message)
+        messages_data.append((messages[i], 'alert-warning ms-5' if i % 2 == 0 else 'alert-success me-5'))
         message_html += '<div class="alert {1}" role="alert">{0}</div>\n'.format(
             message, 'alert-warning ms-5' if i % 2 == 0 else 'alert-success me-5')
-        messages_data.append((messages[i], 'alert-warning ms-5' if i % 2 == 0 else 'alert-success me-5'))
 
     return render_template('vote.html', **vars())
 
